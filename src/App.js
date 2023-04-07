@@ -23,6 +23,10 @@ function App(props) {
   const [filter, setFilter] = useState("All");
   const listHeadingRef = useRef(null);
 
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
+
   const taskList = tasks
     .filter(FILTER_MAP[filter])
     .map((task) => (
@@ -79,7 +83,7 @@ function App(props) {
       listHeadingRef.current.focus();
     }
   }, [tasks.length, prevTaskLength]);
-  
+
   return (
     <div className="todoapp stack-large">
       <h1>TodoMatic</h1>

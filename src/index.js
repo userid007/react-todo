@@ -8,10 +8,11 @@ const DATA = [
   { id: "todo-1", name: "Sleep", completed: false },
   { id: "todo-2", name: "Repeat", completed: false },
 ];
+const TASKS = JSON.parse(localStorage.getItem("tasks"));
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App tasks={DATA} />
+    <App tasks={TASKS === null ? DATA : TASKS} />
   </React.StrictMode>
 );
